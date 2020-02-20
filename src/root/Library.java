@@ -26,9 +26,7 @@ public class Library implements Comparable {
             return 0;
         }
 
-        List<Book> relevantBooks = getRelevantBooksForDays(remainingDays);
-
-        return getScoreofBookList(relevantBooks);
+        return getScoreofBookList(books);
     }
 
     public List<Book> getRelevantBooksForDays(long remainingDays) {
