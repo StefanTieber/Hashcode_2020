@@ -15,6 +15,9 @@ public class FileWriter {
         try {
             PrintWriter writer = new PrintWriter(filePath, ENCODING);
 
+            printLibraryCount(writer, libraries);
+
+
             //System.out.println(strings.size());
             //writer.println(strings.size());
 
@@ -28,6 +31,15 @@ public class FileWriter {
             System.err.println("Exception occurred trying to write " + filePath);
             e.printStackTrace();
         }
+    }
+
+
+    public static void printLibraryCount(PrintWriter writer, List<Library> libraries) {
+        writer.println(libraries.size());
+    }
+
+    public static void printLibraryDescription(PrintWriter writer, Library library){
+        writer.println(library.books.size());
     }
 
 

@@ -1,6 +1,6 @@
 package root;
 
 public class Book {
-    Integer id;
-    Integer score;
+    public Integer id;
+    public Integer score;
 }
