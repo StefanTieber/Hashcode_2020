@@ -37,11 +37,26 @@ public class Main {
             int maxScore = 0;
             Library bestLibrary = null;
 
-            for (Library library : libraries) {
+            int i = 0;
+
+            for (i = 0; i < Math.sqrt(libraries.size()); i++) {
+                Library library = libraries.get(i);
+
                 int score = library.getScore(day);
                 if (score > maxScore) {
                     maxScore = score;
                     bestLibrary = library;
+                }
+            }
+
+            for (; i < libraries.size(); i++) {
+                Library library = libraries.get(i);
+
+                int score = library.getScore(day);
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestLibrary = library;
+                    break;
                 }
             }
 
@@ -51,7 +66,7 @@ public class Main {
             bestLibrary.relevantBooks = bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup);
             removeAllBooksScannedByThisLibrary(bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup), bestLibrary, day);
 
-            for(Library library : libraries) {
+            for (Library library : libraries) {
                 library.books.remove(bestLibrary.relevantBooks);
             }
 
@@ -68,12 +83,12 @@ public class Main {
             return;
         }
 
-        long numberOfScannableBooks = (long) remainingDays * (long)library.booksPerDay;
+        long numberOfScannableBooks = (long) remainingDays * (long) library.booksPerDay;
 
         List<Book> relevantBooks;
 
         if (numberOfScannableBooks < books.size()) {
-            relevantBooks = books.subList(0, (int)numberOfScannableBooks);
+            relevantBooks = books.subList(0, (int) numberOfScannableBooks);
         } else {
             relevantBooks = books;
         }
