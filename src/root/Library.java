@@ -1,5 +1,6 @@
 package root;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
@@ -7,5 +8,5 @@ public class Library {
     public int numberBooks;
     public int timeForSignup;
     public int booksPerDay;
-    public List<Book> books;
+    public List<Book> books = new ArrayList<>();
 }
