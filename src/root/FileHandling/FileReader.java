@@ -2,11 +2,8 @@ package root.FileHandling;
 
 import root.Book;
 import root.Library;
-import root.Matrix;
 
 import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FileReader {
     public static InputDTO readInputFile() {
@@ -36,6 +33,7 @@ public class FileReader {
 
             for (int i = 0; i < inputDTO.numberLibraries; i++) {
                 Library library = new Library();
+                library.id = i;
 
                 line = reader.readLine();
                 parts = line.split("\\s+");
