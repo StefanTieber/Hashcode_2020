@@ -31,6 +31,8 @@ public class Main {
         int day = 0;
 
         while (day < NUMBER_DAYS && libraries.size() > 0) {
+            System.out.println("Librarys: " + libraries.size());
+            System.out.println("Days: " + day + " of " + NUMBER_DAYS);
 
             int maxScore = 0;
             Library bestLibrary = null;
