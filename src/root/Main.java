@@ -63,12 +63,12 @@ public class Main {
             return;
         }
 
-        int numberOfScannableBooks = remainingDays * library.booksPerDay;
+        long numberOfScannableBooks = (long) remainingDays * (long)library.booksPerDay;
 
         List<Book> scannableBooks;
 
         if (numberOfScannableBooks < books.size()) {
-            scannableBooks = books.subList(0, numberOfScannableBooks);
+            scannableBooks = books.subList(0, (int)numberOfScannableBooks);
         } else {
             scannableBooks = books;
         }
