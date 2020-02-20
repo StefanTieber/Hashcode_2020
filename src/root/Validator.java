@@ -15,9 +15,12 @@ public class Validator {
             days += library.timeForSignup;
 
             int daysActive = Main.NUMBER_DAYS - days;
-            int booksScanned = daysActive * library.booksPerDay;
 
-            books.addAll(library.books.subList(0, booksScanned));
+            if (daysActive > 0) {
+                int booksScanned = daysActive * library.booksPerDay;
+
+                books.addAll(library.books.subList(0, booksScanned));
+            }
         }
 
         Collection<Book> nonDuplicatedEmployees = books.stream()
