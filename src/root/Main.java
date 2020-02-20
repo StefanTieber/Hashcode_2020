@@ -8,10 +8,10 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> strings = FileReader.readStrings();
+//        List<String> strings = FileReader.readStrings();
+//
+//        FileWriter.writeStrings(strings);
 
-        FileWriter.writeStrings(strings);
-
-        Validator.validate(strings);
+//        Validator.validate(strings);
     }
 }

@@ -1,12 +1,15 @@
 package root.FileHandling;
 
+import root.Library;
+
 import java.io.PrintWriter;
 import java.util.List;
 
 public class FileWriter {
     private static final String ENCODING = "UTF-8";
 
-    public static void writeStrings(List<String> strings) {
+
+    public static void writeStrings(List<Library> libraries) {
         String filePath = FilePath.OUTPUT_PATH;
 
         try {
@@ -15,9 +18,9 @@ public class FileWriter {
             //System.out.println(strings.size());
             //writer.println(strings.size());
 
-            for (String string : strings) {
+            for (Library library : libraries) {
                 //System.out.println(string);
-                writer.println(string);
+                writer.println();
             }
 
             writer.close();
@@ -26,4 +29,6 @@ public class FileWriter {
             e.printStackTrace();
         }
     }
+
+
 }
