@@ -30,7 +30,7 @@ public class Main {
 
         int day = 0;
 
-        while (day < NUMBER_DAYS) {
+        while (day < NUMBER_DAYS && libraries.size() > 0) {
 
             int maxScore = 0;
             Library bestLibrary = null;
@@ -54,14 +54,21 @@ public class Main {
     }
 
     public static void removeAllBooksScannedByThisLibrary(List<Book> books, Library library, int day) {
-        int daysLeftToScan = NUMBER_DAYS - day;
-        int numberOfScannableBooks = daysLeftToScan * library.booksPerDay;
+        int remainingDays = NUMBER_DAYS - (day + library.timeForSignup);
 
-        if (numberOfScannableBooks > books.size() - 1) {
-            numberOfScannableBooks = books.size() - 1;
+        if (remainingDays <= 0) {
+            return;
         }
 
-        List<Book> scannableBooks = books.subList(0, numberOfScannableBooks);
+        int numberOfScannableBooks = remainingDays * library.booksPerDay;
+
+        List<Book> scannableBooks;
+
+        if (numberOfScannableBooks < books.size()) {
+            scannableBooks = books.subList(0, numberOfScannableBooks);
+        } else {
+            scannableBooks = books;
+        }
 
         books.removeAll(scannableBooks);
     }

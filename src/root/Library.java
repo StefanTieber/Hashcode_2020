@@ -18,10 +18,14 @@ public class Library implements Comparable {
         return Float.compare(this.pointsPerDay(), library.pointsPerDay());
     }
 
-    public int getScore(int remainingDays) {
-        remainingDays -= timeForSignup;
+    public int getScore(int day) {
+        int remainingDays = Main.NUMBER_DAYS - (day + timeForSignup);
 
-        int numberOfBooks = remainingDays * booksPerDay;
+        if (remainingDays <= 0) {
+            return 0;
+        }
+
+        long numberOfBooks = (long) remainingDays * (long) booksPerDay;
 
         List<Book> relevantBooks = new ArrayList<>(books);
 
@@ -32,11 +36,9 @@ public class Library implements Comparable {
             }
         }
 
-        if (numberOfBooks > relevantBooks.size() - 1) {
-            numberOfBooks = relevantBooks.size() - 1;
+        if (numberOfBooks < relevantBooks.size()) {
+            relevantBooks = relevantBooks.subList(0, (int) numberOfBooks);
         }
-
-        relevantBooks.subList(0, numberOfBooks);
 
         return getScoreofBookList(relevantBooks);
     }
