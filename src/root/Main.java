@@ -37,6 +37,8 @@ public class Main {
             int maxScore = 0;
             Library bestLibrary = null;
 
+            Collections.shuffle(libraries);
+
             int i = 0;
 
             for (i = 0; i < Math.sqrt(libraries.size()); i++) {
