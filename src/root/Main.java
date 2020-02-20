@@ -2,6 +2,7 @@ package root;
 
 import root.FileHandling.FileReader;
 import root.FileHandling.FileWriter;
+import root.FileHandling.InputDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Book b1 = new Book();
-        b1.id=1;
-        Book b2 = new Book();
-        b2.id=2;
-        Book b3 = new Book();
-        b3.id=3;
+        InputDTO inputDTO = FileReader.readInputFile();
 
 
 
