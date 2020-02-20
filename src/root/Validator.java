@@ -17,10 +17,10 @@ public class Validator {
             int daysActive = Main.NUMBER_DAYS - days;
 
             if (daysActive > 0) {
-                long booksScanned = (long)daysActive * (long)library.booksPerDay;
+                long booksScanned = (long) daysActive * (long) library.booksPerDay;
 
-                if (booksScanned < library.numberBooks) {
-                    books.addAll(library.relevantBooks.subList(0, (int)booksScanned));
+                if (booksScanned < library.relevantBooks.size()) {
+                    books.addAll(library.relevantBooks.subList(0, (int) booksScanned));
                 } else {
                     books.addAll(library.relevantBooks);
                 }

@@ -50,6 +50,11 @@ public class Main {
             libraries.removeIf(obj -> obj.id == finalBestLibrary.id);
             bestLibrary.relevantBooks = bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup);
             removeAllBooksScannedByThisLibrary(bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup), bestLibrary, day);
+
+//            for(Library library : libraries) {
+//                library.books.remove(bestLibrary.relevantBooks);
+//            }
+
             day += bestLibrary.timeForSignup;
         }
 
@@ -65,14 +70,14 @@ public class Main {
 
         long numberOfScannableBooks = (long) remainingDays * (long)library.booksPerDay;
 
-        List<Book> scannableBooks;
+        List<Book> relevantBooks;
 
         if (numberOfScannableBooks < books.size()) {
-            scannableBooks = books.subList(0, (int)numberOfScannableBooks);
+            relevantBooks = books.subList(0, (int)numberOfScannableBooks);
         } else {
-            scannableBooks = books;
+            relevantBooks = books;
         }
 
-        books.removeAll(scannableBooks);
+        allBooks.removeAll(relevantBooks);
     }
 }
