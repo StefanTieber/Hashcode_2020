@@ -18,6 +18,29 @@ public class Library implements Comparable {
         return Float.compare(this.pointsPerDay(), library.pointsPerDay());
     }
 
+    public int getScore(int remainingDays) {
+        remainingDays -= timeForSignup;
+
+        int numberOfBooks = remainingDays * booksPerDay;
+
+        List<Book> relevantBooks = new ArrayList<>(books);
+
+        for (int i = relevantBooks.size() - 1; i >= 0; i--) {
+            Book book = relevantBooks.get(i);
+            if (!Main.allBooks.contains(book)) {
+                relevantBooks.remove(book);
+            }
+        }
+
+        if (numberOfBooks > relevantBooks.size() - 1) {
+            numberOfBooks = relevantBooks.size() - 1;
+        }
+
+        relevantBooks.subList(0, numberOfBooks);
+
+        return getScoreofBookList(relevantBooks);
+    }
+
     public float pointsPerDay() {
         Collections.sort(books);
 
@@ -30,12 +53,12 @@ public class Library implements Comparable {
 
         List<Book> scannableBooks = books.subList(0, numberOfBooks);
 
-        int score = getScore(scannableBooks);
+        int score = getScoreofBookList(scannableBooks);
 
         return (float) score / daysToScan;
     }
 
-    private int getScore(List<Book> scannableBooks) {
+    private int getScoreofBookList(List<Book> scannableBooks) {
         int score = 0;
 
         for (Book book : scannableBooks) {
