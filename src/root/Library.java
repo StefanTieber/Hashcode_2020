@@ -22,13 +22,18 @@ public class Library implements Comparable {
         Collections.sort(books);
 
         int daysToScan = Main.NUMBER_DAYS - timeForSignup;
-        int numberOfBooks = daysToScan * booksPerDay;
 
-        if (numberOfBooks > books.size() - 1) {
-            numberOfBooks = books.size() - 1;
+        List<Book> scannableBooks = new ArrayList<>();
+
+        if (daysToScan > 0) {
+            long numberOfBooks = (long)daysToScan * (long)booksPerDay;
+
+            if (numberOfBooks < books.size()) {
+                scannableBooks = books.subList(0, (int)numberOfBooks);
+            } else {
+                scannableBooks = books;
+            }
         }
-
-        List<Book> scannableBooks = books.subList(0, numberOfBooks);
 
         int score = getScore(scannableBooks);
 
