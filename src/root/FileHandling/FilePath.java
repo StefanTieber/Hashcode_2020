@@ -1,7 +1,7 @@
 package root.FileHandling;
 
 public class FilePath {
-    private static final String RESOURCE_PATH = "???\\src\\resources\\";
+    private static final String RESOURCE_PATH = "src\\resources\\";
 
     private static final String FILE_NAME = "a_example";
 //    private static final String FILE_NAME = "b_small";
