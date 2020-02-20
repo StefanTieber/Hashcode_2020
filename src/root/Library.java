@@ -46,17 +46,7 @@ public class Library implements Comparable {
 
         int daysToScan = Main.NUMBER_DAYS - timeForSignup;
 
-        List<Book> scannableBooks = new ArrayList<>();
-
-        if (daysToScan > 0) {
-            long numberOfBooks = (long)daysToScan * (long)booksPerDay;
-
-            if (numberOfBooks < books.size()) {
-                scannableBooks = books.subList(0, (int)numberOfBooks);
-            } else {
-                scannableBooks = books;
-            }
-        }
+        List<Book> scannableBooks = getBooksThatWillBeScanned(daysToScan);
 
         int score = getScoreofBookList(scannableBooks);
 
@@ -71,5 +61,21 @@ public class Library implements Comparable {
         }
 
         return score;
+    }
+
+    public List<Book> getBooksThatWillBeScanned(int daysToScan) {
+        List<Book> scannableBooks = new ArrayList<>();
+
+        if (daysToScan > 0) {
+            long numberOfBooks = (long) daysToScan * (long) booksPerDay;
+
+            if (numberOfBooks < books.size()) {
+                scannableBooks = books.subList(0, (int) numberOfBooks);
+            } else {
+                scannableBooks = books;
+            }
+        }
+
+        return scannableBooks;
     }
 }

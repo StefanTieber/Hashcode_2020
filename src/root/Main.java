@@ -30,7 +30,7 @@ public class Main {
 
         int day = 0;
 
-        while(day<NUMBER_DAYS) {
+        while (day < NUMBER_DAYS) {
 
             int maxScore = 0;
             Library bestLibrary = null;
@@ -44,16 +44,16 @@ public class Main {
             }
 
             bestLibraries.add(bestLibrary);
-            //remove best library
-            day+=bestLibrary.timeForSignup;
+            Library finalBestLibrary = bestLibrary;
+            libraries.removeIf(obj -> obj.id == finalBestLibrary.id);
+            removeAllBooksScannedByThisLibrary(bestLibrary.getBooksThatWillBeScanned(day - bestLibrary.timeForSignup), bestLibrary, day);
+            day += bestLibrary.timeForSignup;
         }
-
-        //sort books of libraries
 
         return bestLibraries;
     }
 
-    public void removeAllBooksScannedByThisLibrary(List<Book> books, Library library, int day) {
+    public static void removeAllBooksScannedByThisLibrary(List<Book> books, Library library, int day) {
         int daysLeftToScan = NUMBER_DAYS - day;
         int numberOfScannableBooks = daysLeftToScan * library.booksPerDay;
 
