@@ -31,6 +31,20 @@ public class Library implements Comparable {
         return getScoreofBookList(relevantBooks);
     }
 
+    public float getDummyScore(int day) {
+//        int remainingDays = Main.NUMBER_DAYS - (day + timeForSignup);
+//
+//        if (remainingDays <= 0) {
+//            return 0;
+//        }
+//
+//        long score = (long) remainingDays * (long) booksPerDay;
+//
+//        return score > books.size() ? score : books.size();
+
+        return 1.0f/timeForSignup;
+    }
+
     public List<Book> getRelevantBooksForDays(long remainingDays) {
         List<Book> relevantBooks = getRelevantBooks();
 

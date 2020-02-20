@@ -34,7 +34,7 @@ public class Main {
             System.out.println("Librarys: " + libraries.size());
             System.out.println("Days: " + day + " of " + NUMBER_DAYS);
 
-            int maxScore = 0;
+            float maxScore = 0;
             Library bestLibrary = null;
 
             Collections.shuffle(libraries);
@@ -62,6 +62,16 @@ public class Main {
                 }
             }
 
+//            for (int i=0; i < libraries.size(); i++) {
+//                Library library = libraries.get(i);
+//
+//                float score = library.getDummyScore(day);
+//                if (score > maxScore) {
+//                    maxScore = score;
+//                    bestLibrary = library;
+//                }
+//            }
+
             if (bestLibrary == null) {
                 break;
             }
@@ -69,8 +79,8 @@ public class Main {
             bestLibraries.add(bestLibrary);
             Library finalBestLibrary = bestLibrary;
             libraries.removeIf(obj -> obj.id == finalBestLibrary.id);
-            bestLibrary.relevantBooks = bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup);
-            removeAllBooksScannedByThisLibrary(bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup), bestLibrary, day);
+            bestLibrary.relevantBooks = bestLibrary.getRelevantBooksForDays(NUMBER_DAYS - bestLibrary.timeForSignup);
+            removeAllBooksScannedByThisLibrary(bestLibrary.getRelevantBooksForDays(NUMBER_DAYS - bestLibrary.timeForSignup), bestLibrary, day);
 
             for (Library library : libraries) {
                 library.books.remove(bestLibrary.relevantBooks);

@@ -36,13 +36,13 @@ public class FileWriter {
     }
 
     public static void printLibraryDescription(PrintWriter writer, Library library) {
-        writer.println(library.id + " " + library.relevantBooks.size());
+        writer.println(library.id + " " + library.books.size());
     }
 
     public static void printLibraryBooks(PrintWriter writer, Library library) {
         String res = "";
 
-        for (Book book : library.relevantBooks) {
+        for (Book book : library.books) {
             res += book.id + " ";
         }
 

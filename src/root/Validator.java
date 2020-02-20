@@ -19,10 +19,10 @@ public class Validator {
             if (daysActive > 0) {
                 long booksScanned = (long) daysActive * (long) library.booksPerDay;
 
-                if (booksScanned < library.relevantBooks.size()) {
-                    books.addAll(library.relevantBooks.subList(0, (int) booksScanned));
+                if (booksScanned < library.books.size()) {
+                    books.addAll(library.books.subList(0, (int) booksScanned));
                 } else {
-                    books.addAll(library.relevantBooks);
+                    books.addAll(library.books);
                 }
             }
         }
