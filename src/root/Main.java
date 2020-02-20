@@ -51,9 +51,9 @@ public class Main {
             bestLibrary.relevantBooks = bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup);
             removeAllBooksScannedByThisLibrary(bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup), bestLibrary, day);
 
-//            for(Library library : libraries) {
-//                library.books.remove(bestLibrary.relevantBooks);
-//            }
+            for(Library library : libraries) {
+                library.books.remove(bestLibrary.relevantBooks);
+            }
 
             day += bestLibrary.timeForSignup;
         }
