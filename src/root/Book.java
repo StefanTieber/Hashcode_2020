@@ -14,4 +14,9 @@ public class Book implements Comparable {
         Book book = (Book) o;
         return Integer.compare(this.score, book.score);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return ((Book) o).id.equals(id);
+    }
 }
