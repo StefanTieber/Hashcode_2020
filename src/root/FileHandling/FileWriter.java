@@ -16,7 +16,7 @@ public class FileWriter {
             //writer.println(strings.size());
 
             for (String string : strings) {
-                System.out.println(string);
+                //System.out.println(string);
                 writer.println(string);
             }
 

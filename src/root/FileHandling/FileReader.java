@@ -21,7 +21,7 @@ public class FileReader {
 
             for (int i = 0; i < numberOfRows; i++) {
                 line = reader.readLine();
-                System.out.println(line);
+                //System.out.println(line);
                 strings.add(line);
             }
 
@@ -73,7 +73,7 @@ public class FileReader {
                 parts = line.split("\\s+");
 
                 for (int iX = 0; iX < matrix.x; iX++) {
-                    matrix.values[iY][iX] = Integer.valueOf(parts[iX]);
+                    matrix.values[iY][iX] = Integer.parseInt(parts[iX]);
                 }
             }
         } catch (NumberFormatException e) {
