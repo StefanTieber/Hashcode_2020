@@ -1,5 +1,6 @@
 package root.FileHandling;
 
+import root.Book;
 import root.Library;
 
 import java.io.PrintWriter;
@@ -17,13 +18,9 @@ public class FileWriter {
 
             printLibraryCount(writer, libraries);
 
-
-            //System.out.println(strings.size());
-            //writer.println(strings.size());
-
             for (Library library : libraries) {
-                //System.out.println(string);
-                writer.println();
+                printLibraryDescription(writer, library);
+                printLibraryBooks(writer,library);
             }
 
             writer.close();
@@ -38,8 +35,18 @@ public class FileWriter {
         writer.println(libraries.size());
     }
 
-    public static void printLibraryDescription(PrintWriter writer, Library library){
-        writer.println(library.books.size());
+    public static void printLibraryDescription(PrintWriter writer, Library library) {
+        writer.println(library.id + " " + library.books.size());
+    }
+
+    public static void printLibraryBooks(PrintWriter writer, Library library) {
+        String res = "";
+
+        for (Book book : library.books) {
+            res += book.id + " ";
+        }
+
+        writer.println(res);
     }
 
 
