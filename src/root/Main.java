@@ -62,6 +62,10 @@ public class Main {
                 }
             }
 
+            if (bestLibrary == null) {
+                break;
+            }
+
             bestLibraries.add(bestLibrary);
             Library finalBestLibrary = bestLibrary;
             libraries.removeIf(obj -> obj.id == finalBestLibrary.id);
