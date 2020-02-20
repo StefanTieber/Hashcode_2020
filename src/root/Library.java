@@ -3,6 +3,9 @@ package root;
 import java.util.List;
 
 public class Library {
-    public Integer id;
+    public int id;
+    public int numberBooks;
+    public int timeForSignup;
+    public int booksPerDay;
     public List<Book> books;
 }
