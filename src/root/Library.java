@@ -10,6 +10,7 @@ public class Library implements Comparable {
     public int timeForSignup;
     public int booksPerDay;
     public List<Book> books = new ArrayList<>();
+    public List<Book> relevantBooks = new ArrayList<>();
 
 
     @Override
@@ -25,8 +26,28 @@ public class Library implements Comparable {
             return 0;
         }
 
-        long numberOfBooks = (long) remainingDays * (long) booksPerDay;
+        List<Book> relevantBooks = getRelevantBooksForDays(remainingDays);
 
+        return getScoreofBookList(relevantBooks);
+    }
+
+    public List<Book> getRelevantBooksForDays(long remainingDays) {
+        List<Book> relevantBooks = getRelevantBooks();
+
+        if (remainingDays > 0) {
+            long numberOfBooks = remainingDays * (long) booksPerDay;
+
+            if (numberOfBooks < books.size()) {
+                relevantBooks = books.subList(0, (int) numberOfBooks);
+            } else {
+                relevantBooks = books;
+            }
+        }
+
+        return relevantBooks;
+    }
+
+    private List<Book> getRelevantBooks() {
         List<Book> relevantBooks = new ArrayList<>(books);
 
         for (int i = relevantBooks.size() - 1; i >= 0; i--) {
@@ -35,12 +56,7 @@ public class Library implements Comparable {
                 relevantBooks.remove(book);
             }
         }
-
-        if (numberOfBooks < relevantBooks.size()) {
-            relevantBooks = relevantBooks.subList(0, (int) numberOfBooks);
-        }
-
-        return getScoreofBookList(relevantBooks);
+        return relevantBooks;
     }
 
     public float pointsPerDay() {
@@ -48,7 +64,7 @@ public class Library implements Comparable {
 
         int daysToScan = Main.NUMBER_DAYS - timeForSignup;
 
-        List<Book> scannableBooks = getBooksThatWillBeScanned(daysToScan);
+        List<Book> scannableBooks = getRelevantBooksForDays(daysToScan);
 
         int score = getScoreofBookList(scannableBooks);
 
@@ -63,21 +79,5 @@ public class Library implements Comparable {
         }
 
         return score;
-    }
-
-    public List<Book> getBooksThatWillBeScanned(int daysToScan) {
-        List<Book> scannableBooks = new ArrayList<>();
-
-        if (daysToScan > 0) {
-            long numberOfBooks = (long) daysToScan * (long) booksPerDay;
-
-            if (numberOfBooks < books.size()) {
-                scannableBooks = books.subList(0, (int) numberOfBooks);
-            } else {
-                scannableBooks = books;
-            }
-        }
-
-        return scannableBooks;
     }
 }

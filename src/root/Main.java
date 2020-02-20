@@ -46,7 +46,8 @@ public class Main {
             bestLibraries.add(bestLibrary);
             Library finalBestLibrary = bestLibrary;
             libraries.removeIf(obj -> obj.id == finalBestLibrary.id);
-            removeAllBooksScannedByThisLibrary(bestLibrary.getBooksThatWillBeScanned(day - bestLibrary.timeForSignup), bestLibrary, day);
+            bestLibrary.relevantBooks = bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup);
+            removeAllBooksScannedByThisLibrary(bestLibrary.getRelevantBooksForDays(day - bestLibrary.timeForSignup), bestLibrary, day);
             day += bestLibrary.timeForSignup;
         }
 

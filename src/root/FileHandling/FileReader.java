@@ -4,6 +4,7 @@ import root.Book;
 import root.Library;
 
 import java.io.BufferedReader;
+import java.util.Collections;
 
 public class FileReader {
     public static InputDTO readInputFile() {
@@ -49,6 +50,8 @@ public class FileReader {
                     int id = Integer.parseInt(parts[j]);
                     library.books.add(inputDTO.books.get(id));
                 }
+
+                Collections.sort(library.books);
 
                 inputDTO.libraries.add(library);
             }

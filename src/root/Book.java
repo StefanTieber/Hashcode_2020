@@ -12,7 +12,7 @@ public class Book implements Comparable {
     @Override
     public int compareTo(Object o) {
         Book book = (Book) o;
-        return Integer.compare(this.score, book.score);
+        return Integer.compare(book.score, this.score);
     }
 
     @Override
