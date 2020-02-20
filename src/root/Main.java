@@ -9,10 +9,13 @@ import java.util.List;
 
 public class Main {
     public static int NUMBER_DAYS;
+    public static List<Book> allBooks;
 
     public static void main(String[] args) {
         InputDTO input = FileReader.readInputFile();
         NUMBER_DAYS = input.numberDays;
+        allBooks = input.books;
+        Collections.sort(allBooks);
 
         List<Library> libraries = findSolution(input.libraries);
 
